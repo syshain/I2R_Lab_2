@@ -1,0 +1,6 @@
+*.npy
+*.npz
+*.venv
+*.png
+*.jpg
+__*__
