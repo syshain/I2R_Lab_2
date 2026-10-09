@@ -1,0 +1,109 @@
+================================================================
+LITE 6 HAND-EYE AND KINEMATIC CALIBRATION RESULTS
+================================================================
+
+Data            : /home/arshhuss/Arshad/Academics/Imperial/PhD_25-29/GTA/I2R_lab_development/Labs/Lab_2/data/calibration_data.npy
+Poses           : 28   Joint groups: 6
+Weights         : position=10.00  orientation=50.00
+
+-- Nominal-DH FK vs controller T_0_6, over these poses --
+  RMSE 4.674 mm, pose-dependent part 2.030 mm, orientation 1.05 deg mean / 1.84 deg max
+
+-- Baseline: nominal DH, T_6_C = I, nothing fitted --
+  Pos std       : X=112.2861  Y=62.2390  Z=74.9517 mm
+  s_max         : 112.2861 mm (X axis)
+  Trans max     : 264.3266 mm
+  Orientation   : mean 43.6084 deg, max 81.0921 deg
+
+
+================================================================
+STAGE 1 - HAND-EYE AGAINST NOMINAL KINEMATICS
+================================================================
+
+-- Consistency over the 28 poses used to fit it --
+  Pos std       : X=3.2820  Y=2.5765  Z=5.2887 mm
+  s_max         : 5.2887 mm (Z axis)
+  Trans max     : 13.2810 mm
+  Orientation   : mean 2.0807 deg, max 3.3631 deg
+
+  Iterations    : 7  (stalled, NOT converged)
+
+-- Fitted T_6_C
+  position     x=-62.682  y=3.199  z=96.583 mm
+  orientation  roll=6.867  pitch=1.683  yaw=-89.334 deg
+  raw vector   [ -62.6821     3.1994    96.5832     0.1174    -0.0703    -1.5588]
+
+================================================================
+STAGE F - HAND-EYE AGAINST THE CONTROLLER FK
+================================================================
+
+-- Consistency over the 28 poses used to fit it --
+  Pos std       : X=2.4464  Y=1.9311  Z=2.2391 mm
+  s_max         : 2.4464 mm (X axis)
+  Trans max     : 6.9942 mm
+  Orientation   : mean 0.8770 deg, max 1.8467 deg
+
+  Iterations    : 7  (stalled, NOT converged)
+
+-- Fitted T_6_C
+  position     x=-62.508  y=-0.535  z=94.495 mm
+  orientation  roll=6.905  pitch=1.144  yaw=-91.189 deg
+  raw vector   [ -62.5077    -0.5348    94.4948     0.1098    -0.0804    -1.5906]
+
+-- The same T_6_C scored through the nominal-DH FK --
+  Pos std       : X=3.2454  Y=2.9222  Z=5.7062 mm
+  s_max         : 5.7062 mm (Z axis)
+  Trans max     : 13.3720 mm
+  Orientation   : mean 1.1890 deg, max 2.6354 deg
+
+================================================================
+STAGE 2 - PARTIAL-MODEL DH + HAND-EYE (SICILIA)
+================================================================
+
+-- Consistency over the 28 poses used to fit it --
+  Pos std       : X=1.8850  Y=1.2553  Z=1.2586 mm
+  s_max         : 1.8850 mm (X axis)
+  Trans max     : 6.0106 mm
+  Orientation   : mean 0.7844 deg, max 1.6293 deg
+
+  Iterations    : 7  (stalled, NOT converged)
+
+-- Fitted T_6_C
+  position     x=-65.391  y=0.305  z=95.841 mm
+  orientation  roll=6.254  pitch=1.549  yaw=-90.411 deg
+  raw vector   [ -65.3915     0.3048    95.8415     0.1068    -0.0650    -1.5776]
+
+-- Calibrated DH parameters (angles in degrees) --
+  param      unit      nominal   calibrated        delta
+  a1           mm      0.00000      0.00000     +0.00000   held at nominal
+  a2           mm      0.00000      2.59945     +2.59945
+  a3           mm    200.00000    203.22485     +3.22485
+  a4           mm     87.00000     91.15255     +4.15255
+  a5           mm      0.00000      0.39660     +0.39660
+  a6           mm      0.00000     -3.16929     -3.16929
+  alpha1      deg      0.00000      0.00000     +0.00000   held at nominal
+  alpha2      deg    -90.00000    -90.28487     -0.28487
+  alpha3      deg    180.00000    180.96745     +0.96745
+  alpha4      deg     90.00000     90.42994     +0.42994
+  alpha5      deg     90.00000     90.48289     +0.48289
+  alpha6      deg    -90.00000    -88.99030     +1.00970
+  d1           mm    243.30000    243.30000     +0.00000   held at nominal
+  d2           mm      0.00000      0.00000     +0.00000   held at nominal
+  d3           mm      0.00000      0.00000     +0.00000   held at nominal
+  d4           mm    227.60000    234.14360     +6.54360
+  d5           mm      0.00000     -3.56802     -3.56802
+  d6           mm     61.50000     61.50000     +0.00000   held at nominal
+  theta1      deg      0.00000      0.00000     +0.00000   held at nominal
+  theta2      deg    -90.00000    -90.40424     -0.40424
+  theta3      deg    -90.00000    -89.92019     +0.07981
+  theta4      deg      0.00000     -0.39885     -0.39885
+  theta5      deg      0.00000     -0.03294     -0.03294
+  theta6      deg      0.00000      0.00000     +0.00000   held at nominal
+
+COMPARISON TABLE
+
+Method                  s_max (mm)     TransMax OriMax (deg)
+Baseline                   112.286      264.327       81.092
+Stage 1 hand-eye             5.289       13.281        3.363
+Stage F controller FK        2.446        6.994        1.847
+Stage 2 DH + HE              1.885        6.011        1.629

@@ -1,0 +1,112 @@
+DH CALIBRATION VALIDATION RESULTS
+============================================================
+
+Worksheet notation: base=0, end-effector=6, camera=C,
+ArUco artifact=W. Metric: scatter of reconstructed artifact
+position T_0_W = FK(zeta,Q) @ T_6_C @ T_C_W across relocated
+poses. Each DH set is scored with ITS OWN hand-eye estimate.
+
+--- BASELINE ---
+T_6_C — Baseline (nominal + I):
+      1.0000     0.0000     0.0000     0.0000
+      0.0000     1.0000     0.0000     0.0000
+      0.0000     0.0000     1.0000     0.0000
+      0.0000     0.0000     0.0000     1.0000
+
+Translation (mm):
+  X: 0.00
+  Y: 0.00
+  Z: 0.00
+
+Rotation (degrees, xyz Euler):
+  Roll:  0.00
+  Pitch: 0.00
+  Yaw:   0.00
+Poses evaluated : 11
+Mean position   : (  -96.40,  -337.81,   106.57) mm
+Std dev (xyz)   : ( 49.63,  42.76,  46.34) mm
+Max deviation   : 113.47 mm from mean
+RMS scatter     : 80.25 mm
+Calibration quality (s_max=49.6 mm): POOR
+
+--- STAGE 1 HE ---
+T_6_C — Stage 1 HE (nominal + HE(stage1)):
+      0.0116     0.9928    -0.1192   -62.6821
+     -0.9995     0.0080    -0.0306     3.1994
+     -0.0294     0.1195     0.9924    96.5832
+      0.0000     0.0000     0.0000     1.0000
+
+Translation (mm):
+  X: -62.68
+  Y: 3.20
+  Z: 96.58
+
+Rotation (degrees, xyz Euler):
+  Roll:  6.87
+  Pitch: 1.68
+  Yaw:   -89.33
+Poses evaluated : 11
+Mean position   : ( -146.48,  -414.45,    62.88) mm
+Std dev (xyz)   : (  2.61,   2.43,   2.22) mm
+Max deviation   : 7.74 mm from mean
+RMS scatter     : 4.20 mm
+Calibration quality (s_max=2.6 mm): EXCELLENT
+
+--- STAGE 2 DH ---
+T_6_C — Stage 2 DH (DH(stage2) + HE(stage2)):
+     -0.0072     0.9940    -0.1091   -65.3915
+     -0.9996    -0.0101    -0.0261     0.3048
+     -0.0270     0.1089     0.9937    95.8415
+      0.0000     0.0000     0.0000     1.0000
+
+Translation (mm):
+  X: -65.39
+  Y: 0.30
+  Z: 95.84
+
+Rotation (degrees, xyz Euler):
+  Roll:  6.25
+  Pitch: 1.55
+  Yaw:   -90.41
+Poses evaluated : 11
+Mean position   : ( -146.45,  -419.44,    59.74) mm
+Std dev (xyz)   : (  2.48,   1.66,   2.18) mm
+Max deviation   : 6.74 mm from mean
+RMS scatter     : 3.69 mm
+Calibration quality (s_max=2.5 mm): EXCELLENT
+
+--- STAGE 3 HE ---
+T_6_C — Stage 3 HE (DH(nominal) + HE(fitted vs SDK FK)):
+     -0.0207     0.9925    -0.1206   -62.5077
+     -0.9996    -0.0230    -0.0173    -0.5348
+     -0.0200     0.1202     0.9925    94.4948
+      0.0000     0.0000     0.0000     1.0000
+
+Translation (mm):
+  X: -62.51
+  Y: -0.53
+  Z: 94.49
+
+Rotation (degrees, xyz Euler):
+  Roll:  6.91
+  Pitch: 1.14
+  Yaw:   -91.19
+Poses evaluated : 11
+Mean position   : ( -146.43,  -413.53,    64.74) mm
+Std dev (xyz)   : (  1.65,   2.40,   2.14) mm
+Max deviation   : 5.85 mm from mean
+RMS scatter     : 3.62 mm
+Calibration quality (s_max=2.4 mm): EXCELLENT
+
+--- SIDE-BY-SIDE COMPARISON (same validation poses) ---
+Metric                        Baseline      Stage 1 HE      Stage 2 DH      Stage 3 HE
+--------------------------------------------------------------------------------------
+Max deviation (mm)             113.474           7.744           6.745           5.850
+RMS scatter (mm)                80.248           4.201           3.693           3.616
+Std X (mm)                      49.631           2.615           2.478           1.653
+Std Y (mm)                      42.764           2.430           1.655           2.397
+Std Z (mm)                      46.343           2.216           2.180           2.144
+s_max (mm)                      49.631           2.615           2.478           2.397
+Grade                             POOR       EXCELLENT       EXCELLENT       EXCELLENT
+
+Best (tightest max-deviation): Stage 3 HE
