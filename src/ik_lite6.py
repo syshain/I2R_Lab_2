@@ -190,6 +190,7 @@ if __name__ == "__main__":
         field("round trip", "%.2e mm from the target"
               % np.linalg.norm(res["T"][:3, 3] - pose[:3]))
         if not res["success"]:
+            field("settled at", "pos %8.3f %8.3f %8.3f mm" % tuple(res["T"][:3, 3]))
             progress("NOT CONVERGED: the flange settled away from the target.")
     else:
         # Task 1(c): target built from a joint set with the FK, residual stood

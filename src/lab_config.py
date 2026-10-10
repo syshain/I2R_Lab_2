@@ -12,7 +12,7 @@ import numpy as np
 # =============================================================================
 
 ROBOT_IP = os.environ.get("ROBOT_IP", "192.168.1.158")
-CAMERA_INDEX = int(os.environ.get("CAMERA_INDEX", "0"))
+CAMERA_INDEX = int(os.environ.get("CAMERA_INDEX", "4"))
 FRAME_WIDTH = 1920
 FRAME_HEIGHT = 1080
 
@@ -43,9 +43,9 @@ DETECT_REPROJ_REJECT_PX = 15.0
 # They are the artifact frame W's own axes, drawn from its origin.
 AXES_LENGTH_MM = 20.0
 
-# collect_data.py stops counting at this many poses and refuses a shorter set
-# (handout section 6.4). Task 4 has its own, smaller, counts below.
-CAPTURE_MIN_POSES = 30
+# The fewest poses collect_data.py will write: a pair may stop at 20 (Section
+# 6.4), so a set of 20 or more is saved and a shorter one is refused.
+CAPTURE_MIN_POSES = 20
 
 # Run the calibration on only the first MAX_POSES of the saved set. 0 = all of
 # them. Extension 3.1 sets this to 15; it overwrites data/calibration_results.*,
