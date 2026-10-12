@@ -197,15 +197,27 @@ if __name__ == "__main__":
         # at those same readings. A correct residual is zero there.
         q_check = np.array(IK_CHECK_JOINTS_DEG, dtype=float)
         T_target = fk_from_zeta(np.deg2rad(q_check), ZETA_NOMINAL)
-        e = ik_residual(q_check, T_target)
+        e_zero = ik_residual(q_check, T_target)
+
+        # Verification
+        T_target_v = fk_from_zeta(np.deg2rad(q_check+10), ZETA_NOMINAL)
+        e_verification = ik_residual(q_check, T_target_v)
+
 
         banner("IK RESIDUAL SELF-CHECK")
         field("q (deg)", " ".join("%7.2f" % v for v in q_check))
         field("target", "flange at %8.3f %8.3f %8.3f mm" % tuple(T_target[:3, 3]))
-        field("e (mm, deg)", "[" + "  ".join("%9.4f" % v for v in e) + "]")
-        field("||e||", "%.2e  (must be zero)" % np.linalg.norm(e))
+        field("e (mm, deg)", "[" + "  ".join("%9.4f" % v for v in e_zero) + "]")
+        field("||e||", "%.2e  (must be zero)" % np.linalg.norm(e_zero))
+
+        banner("IK VERIFICATION SELF-CHECK")
+        field("q (deg)", " ".join("%7.2f" % v for v in q_check))
+        field("target", "flange at %8.3f %8.3f %8.3f mm" % tuple(T_target_v[:3, 3]))
+        field("e (mm, deg)", "[" + "  ".join("%9.4f" % v for v in e_verification) + "]")
+        field("||e||", "%.2e  (must be ~72.6mm)" % np.linalg.norm(e_verification))
+
         print()
-        if np.linalg.norm(e) < 1e-9:
-            print("  Zero.")
+        if np.linalg.norm(e_zero) < 1e-9 and abs(np.linalg.norm(e_verification) - 72.6)  < 1e-1:
+            print("  All checks OK")
         else:
-            print("  Not zero: the residual is wrong.")
+           print("  Check residual - it is wrong")

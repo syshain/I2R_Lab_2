@@ -25,21 +25,30 @@ def param_table(n=N_DOF):
 
 
 def report(J, table, title, free):
-    """Print one parameter set: each singular value divided by the largest."""
-    s = np.linalg.svd(J, compute_uv=False)
+    """
+    Print one parameter set: normalised singular values, then the rank.
+    """
+    DIR_MIN = 0.15          # component large enough for the parameter to be named
+    _, s, Vt = np.linalg.svd(J, full_matrices=False)
     rel = s / s[0]
-    nonzero_count = np.sum(rel>OBSERVABILITY_ZERO_REL)
     heading(title)
     field("shape", "%d equations x %d unknowns, sigma_max = %.3e"
           % (J.shape[0], J.shape[1], s[0]))
-    print("    %-8s %5s %15s" % ("parameter", "unit", "sigma/sigma_max"))
-    for row, col in enumerate(free):
-        name, unit = table[col]
-        print("    %-8s %5s %15.3e" % (name, unit, rel[row]))
-    field("Observable parameters count: ",nonzero_count)
+    print("    %-34s %15s  %s" % ("direction", "sigma/sigma_max", "verdict"))
+    for row in range(len(rel)):
+        at_zero = rel[row] < OBSERVABILITY_ZERO_REL
+        # A collapsed direction is the one a pair has to read, so it is named in
+        # full. The rest are named by their largest two, to keep the list short.
+        order = np.argsort(-abs(Vt[row]))[:6 if at_zero else 2]
+        names = [table[free[i]][0] for i in order if abs(Vt[row][i]) > DIR_MIN]
+        print("    %-34s %15.3e  %s"
+              % (", ".join(names) or table[free[order[0]]][0], rel[row],
+                 "AT ZERO: not identifiable" if at_zero else "identifiable"))
+    n_zero = int(np.sum(rel < OBSERVABILITY_ZERO_REL))
+    field("rank", "%d of %d columns; %d collapsed below %.0e of sigma_max"
+          % (len(rel) - n_zero, len(rel), n_zero, OBSERVABILITY_ZERO_REL))
     print()
     return rel
-
 
 def main():
     banner("TASK 3 - OBSERVABILITY OF THE CALIBRATION PARAMETERS")
