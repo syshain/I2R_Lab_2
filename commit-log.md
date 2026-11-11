@@ -1,3 +1,7 @@
+# v4.0 - Robot serial number reporting added
+## 11 Nov 2026
+- Added serial number reporting to all robot-interfacing programs
+
 # v3.3 - Dry run fixes
 ## 12 Oct 2026
 - Changed ik_lite self-check to a more robust verification

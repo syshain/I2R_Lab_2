@@ -1,112 +1,203 @@
-DH CALIBRATION VALIDATION RESULTS
-============================================================
+================================================================
+LITE 6 CALIBRATION VALIDATION - RELOCATED ARTIFACT
+================================================================
 
-Worksheet notation: base=0, end-effector=6, camera=C,
-ArUco artifact=W. Metric: scatter of reconstructed artifact
-position T_0_W = FK(zeta,Q) @ T_6_C @ T_C_W across relocated
-poses. Each DH set is scored with ITS OWN hand-eye estimate.
+Calibration read from : /home/arshhuss/Arshad/Academics/Imperial/PhD_25-29/GTA/I2R_lab_development/Labs/Lab_2/data/calibration_results.npy
+Hold-out capture      : /home/arshhuss/Arshad/Academics/Imperial/PhD_25-29/GTA/I2R_lab_development/Labs/Lab_2/data/validation_data.npy
+Hold-out poses        : 10   Joint groups: 6
 
---- BASELINE ---
-T_6_C — Baseline (nominal + I):
-      1.0000     0.0000     0.0000     0.0000
-      0.0000     1.0000     0.0000     0.0000
-      0.0000     0.0000     1.0000     0.0000
-      0.0000     0.0000     0.0000     1.0000
+-- The artifact moved --
+  W was (    76.02,   -342.06,     67.77) mm, now (   232.38,   -408.95,     65.68) mm
+  170.1 mm apart, chained through the controller's T_0_6 and Stage 1's T_6_C.
 
-Translation (mm):
-  X: 0.00
-  Y: 0.00
-  Z: 0.00
+================================================================
+Baseline, nothing fitted
+================================================================
 
-Rotation (degrees, xyz Euler):
-  Roll:  0.00
-  Pitch: 0.00
-  Yaw:   0.00
-Poses evaluated : 11
-Mean position   : (  -96.40,  -337.81,   106.57) mm
-Std dev (xyz)   : ( 49.63,  42.76,  46.34) mm
-Max deviation   : 113.47 mm from mean
-RMS scatter     : 80.25 mm
-Calibration quality (s_max=49.6 mm): POOR
+-- Consistency over the 10 relocated poses --
+  Pos std       : X=86.2675  Y=89.3017  Z=73.8496 mm
+  s_max         : 89.3017 mm (Y axis)
+  Trans max     : 256.5679 mm
+  Orientation   : mean 26.5900 deg, max 46.6771 deg
 
---- STAGE 1 HE ---
-T_6_C — Stage 1 HE (nominal + HE(stage1)):
-      0.0116     0.9928    -0.1192   -62.6821
-     -0.9995     0.0080    -0.0306     3.1994
-     -0.0294     0.1195     0.9924    96.5832
-      0.0000     0.0000     0.0000     1.0000
+-- T_6_C exactly as fitted
+  position     x=0.000  y=0.000  z=0.000 mm
+  orientation  roll=0.000  pitch=0.000  yaw=0.000 deg
+  raw vector   [   0.0000     0.0000     0.0000     0.0000     0.0000     0.0000]
 
-Translation (mm):
-  X: -62.68
-  Y: 3.20
-  Z: 96.58
+-- Calibrated DH parameters (angles in degrees) --
+  param      unit      nominal   calibrated        delta
+  a1           mm      0.00000      0.00000     +0.00000
+  a2           mm      0.00000      0.00000     +0.00000
+  a3           mm    200.00000    200.00000     +0.00000
+  a4           mm     87.00000     87.00000     +0.00000
+  a5           mm      0.00000      0.00000     +0.00000
+  a6           mm      0.00000      0.00000     +0.00000
+  alpha1      deg      0.00000      0.00000     +0.00000
+  alpha2      deg    -90.00000    -90.00000     +0.00000
+  alpha3      deg    180.00000    180.00000     +0.00000
+  alpha4      deg     90.00000     90.00000     +0.00000
+  alpha5      deg     90.00000     90.00000     +0.00000
+  alpha6      deg    -90.00000    -90.00000     +0.00000
+  d1           mm    243.30000    243.30000     +0.00000
+  d2           mm      0.00000      0.00000     +0.00000
+  d3           mm      0.00000      0.00000     +0.00000
+  d4           mm    227.60000    227.60000     +0.00000
+  d5           mm      0.00000      0.00000     +0.00000
+  d6           mm     61.50000     61.50000     +0.00000
+  theta1      deg      0.00000      0.00000     +0.00000
+  theta2      deg    -90.00000    -90.00000     +0.00000
+  theta3      deg    -90.00000    -90.00000     +0.00000
+  theta4      deg      0.00000      0.00000     +0.00000
+  theta5      deg      0.00000      0.00000     +0.00000
+  theta6      deg      0.00000      0.00000     +0.00000
 
-Rotation (degrees, xyz Euler):
-  Roll:  6.87
-  Pitch: 1.68
-  Yaw:   -89.33
-Poses evaluated : 11
-Mean position   : ( -146.48,  -414.45,    62.88) mm
-Std dev (xyz)   : (  2.61,   2.43,   2.22) mm
-Max deviation   : 7.74 mm from mean
-RMS scatter     : 4.20 mm
-Calibration quality (s_max=2.6 mm): EXCELLENT
+================================================================
+Stage 1 hand-eye
+================================================================
 
---- STAGE 2 DH ---
-T_6_C — Stage 2 DH (DH(stage2) + HE(stage2)):
-     -0.0072     0.9940    -0.1091   -65.3915
-     -0.9996    -0.0101    -0.0261     0.3048
-     -0.0270     0.1089     0.9937    95.8415
-      0.0000     0.0000     0.0000     1.0000
+-- Consistency over the 10 relocated poses --
+  Pos std       : X=3.7687  Y=3.8235  Z=3.8430 mm
+  s_max         : 3.8430 mm (Z axis)
+  Trans max     : 10.0541 mm
+  Orientation   : mean 1.5416 deg, max 2.6514 deg
 
-Translation (mm):
-  X: -65.39
-  Y: 0.30
-  Z: 95.84
+-- T_6_C exactly as fitted
+  position     x=-66.297  y=3.956  z=65.658 mm
+  orientation  roll=4.740  pitch=2.360  yaw=-89.387 deg
+  raw vector   [ -66.2974     3.9560    65.6579     0.0973    -0.0321    -1.5606]
 
-Rotation (degrees, xyz Euler):
-  Roll:  6.25
-  Pitch: 1.55
-  Yaw:   -90.41
-Poses evaluated : 11
-Mean position   : ( -146.45,  -419.44,    59.74) mm
-Std dev (xyz)   : (  2.48,   1.66,   2.18) mm
-Max deviation   : 6.74 mm from mean
-RMS scatter     : 3.69 mm
-Calibration quality (s_max=2.5 mm): EXCELLENT
+-- Calibrated DH parameters (angles in degrees) --
+  param      unit      nominal   calibrated        delta
+  a1           mm      0.00000      0.00000     +0.00000
+  a2           mm      0.00000      0.00000     +0.00000
+  a3           mm    200.00000    200.00000     +0.00000
+  a4           mm     87.00000     87.00000     +0.00000
+  a5           mm      0.00000      0.00000     +0.00000
+  a6           mm      0.00000      0.00000     +0.00000
+  alpha1      deg      0.00000      0.00000     +0.00000
+  alpha2      deg    -90.00000    -90.00000     +0.00000
+  alpha3      deg    180.00000    180.00000     +0.00000
+  alpha4      deg     90.00000     90.00000     +0.00000
+  alpha5      deg     90.00000     90.00000     +0.00000
+  alpha6      deg    -90.00000    -90.00000     +0.00000
+  d1           mm    243.30000    243.30000     +0.00000
+  d2           mm      0.00000      0.00000     +0.00000
+  d3           mm      0.00000      0.00000     +0.00000
+  d4           mm    227.60000    227.60000     +0.00000
+  d5           mm      0.00000      0.00000     +0.00000
+  d6           mm     61.50000     61.50000     +0.00000
+  theta1      deg      0.00000      0.00000     +0.00000
+  theta2      deg    -90.00000    -90.00000     +0.00000
+  theta3      deg    -90.00000    -90.00000     +0.00000
+  theta4      deg      0.00000      0.00000     +0.00000
+  theta5      deg      0.00000      0.00000     +0.00000
+  theta6      deg      0.00000      0.00000     +0.00000
 
---- STAGE 3 HE ---
-T_6_C — Stage 3 HE (DH(nominal) + HE(fitted vs SDK FK)):
-     -0.0207     0.9925    -0.1206   -62.5077
-     -0.9996    -0.0230    -0.0173    -0.5348
-     -0.0200     0.1202     0.9925    94.4948
-      0.0000     0.0000     0.0000     1.0000
+================================================================
+Stage 2 DH + hand-eye
+================================================================
 
-Translation (mm):
-  X: -62.51
-  Y: -0.53
-  Z: 94.49
+-- Consistency over the 10 relocated poses --
+  Pos std       : X=4.3865  Y=2.4942  Z=2.0767 mm
+  s_max         : 4.3865 mm (X axis)
+  Trans max     : 11.2354 mm
+  Orientation   : mean 1.0495 deg, max 1.6866 deg
 
-Rotation (degrees, xyz Euler):
-  Roll:  6.91
-  Pitch: 1.14
-  Yaw:   -91.19
-Poses evaluated : 11
-Mean position   : ( -146.43,  -413.53,    64.74) mm
-Std dev (xyz)   : (  1.65,   2.40,   2.14) mm
-Max deviation   : 5.85 mm from mean
-RMS scatter     : 3.62 mm
-Calibration quality (s_max=2.4 mm): EXCELLENT
+-- T_6_C exactly as fitted
+  position     x=-63.160  y=1.670  z=70.394 mm
+  orientation  roll=5.278  pitch=1.883  yaw=-90.773 deg
+  raw vector   [ -63.1603     1.6701    70.3937     0.0980    -0.0473    -1.5844]
 
---- SIDE-BY-SIDE COMPARISON (same validation poses) ---
-Metric                        Baseline      Stage 1 HE      Stage 2 DH      Stage 3 HE
---------------------------------------------------------------------------------------
-Max deviation (mm)             113.474           7.744           6.745           5.850
-RMS scatter (mm)                80.248           4.201           3.693           3.616
-Std X (mm)                      49.631           2.615           2.478           1.653
-Std Y (mm)                      42.764           2.430           1.655           2.397
-Std Z (mm)                      46.343           2.216           2.180           2.144
-s_max (mm)                      49.631           2.615           2.478           2.397
-Grade                             POOR       EXCELLENT       EXCELLENT       EXCELLENT
+-- Calibrated DH parameters (angles in degrees) --
+  param      unit      nominal   calibrated        delta
+  a1           mm      0.00000      0.00000     +0.00000   held at nominal
+  a2           mm      0.00000     -0.02076     -0.02076
+  a3           mm    200.00000    202.04646     +2.04646
+  a4           mm     87.00000     87.48029     +0.48029
+  a5           mm      0.00000     -1.04197     -1.04197
+  a6           mm      0.00000      2.70509     +2.70509
+  alpha1      deg      0.00000      0.00000     +0.00000   held at nominal
+  alpha2      deg    -90.00000    -90.40821     -0.40821
+  alpha3      deg    180.00000    180.90557     +0.90557
+  alpha4      deg     90.00000     90.50817     +0.50817
+  alpha5      deg     90.00000     90.50685     +0.50685
+  alpha6      deg    -90.00000    -90.39010     -0.39010
+  d1           mm    243.30000    243.30000     +0.00000   held at nominal
+  d2           mm      0.00000      0.00000     +0.00000   held at nominal
+  d3           mm      0.00000      0.00000     +0.00000   held at nominal
+  d4           mm    227.60000    229.19296     +1.59296
+  d5           mm      0.00000      0.67903     +0.67903
+  d6           mm     61.50000     61.50000     +0.00000   held at nominal
+  theta1      deg      0.00000      0.00000     +0.00000   held at nominal
+  theta2      deg    -90.00000    -90.02210     -0.02210
+  theta3      deg    -90.00000    -90.02704     -0.02704
+  theta4      deg      0.00000      0.15687     +0.15687
+  theta5      deg      0.00000      0.37686     +0.37686
+  theta6      deg      0.00000      0.00000     +0.00000   held at nominal
 
-Best (tightest max-deviation): Stage 3 HE
+================================================================
+Stage F, controller FK
+================================================================
+
+-- Consistency over the 10 relocated poses --
+  Pos std       : X=3.6750  Y=3.0974  Z=2.3307 mm
+  s_max         : 3.6750 mm (X axis)
+  Trans max     : 11.0758 mm
+  Orientation   : mean 1.1284 deg, max 1.8417 deg
+
+-- T_6_C exactly as fitted
+  position     x=-64.835  y=3.247  z=66.975 mm
+  orientation  roll=5.060  pitch=1.991  yaw=-89.657 deg
+  raw vector   [ -64.8348     3.2467    66.9754     0.0967    -0.0418    -1.5651]
+
+================================================================
+Stage F, nominal DH FK
+================================================================
+
+-- Consistency over the 10 relocated poses --
+  Pos std       : X=3.2067  Y=3.0851  Z=3.2363 mm
+  s_max         : 3.2363 mm (Z axis)
+  Trans max     : 8.0177 mm
+  Orientation   : mean 1.4979 deg, max 2.3414 deg
+
+-- T_6_C exactly as fitted
+  position     x=-64.835  y=3.247  z=66.975 mm
+  orientation  roll=5.060  pitch=1.991  yaw=-89.657 deg
+  raw vector   [ -64.8348     3.2467    66.9754     0.0967    -0.0418    -1.5651]
+
+-- Calibrated DH parameters (angles in degrees) --
+  param      unit      nominal   calibrated        delta
+  a1           mm      0.00000      0.00000     +0.00000
+  a2           mm      0.00000      0.00000     +0.00000
+  a3           mm    200.00000    200.00000     +0.00000
+  a4           mm     87.00000     87.00000     +0.00000
+  a5           mm      0.00000      0.00000     +0.00000
+  a6           mm      0.00000      0.00000     +0.00000
+  alpha1      deg      0.00000      0.00000     +0.00000
+  alpha2      deg    -90.00000    -90.00000     +0.00000
+  alpha3      deg    180.00000    180.00000     +0.00000
+  alpha4      deg     90.00000     90.00000     +0.00000
+  alpha5      deg     90.00000     90.00000     +0.00000
+  alpha6      deg    -90.00000    -90.00000     +0.00000
+  d1           mm    243.30000    243.30000     +0.00000
+  d2           mm      0.00000      0.00000     +0.00000
+  d3           mm      0.00000      0.00000     +0.00000
+  d4           mm    227.60000    227.60000     +0.00000
+  d5           mm      0.00000      0.00000     +0.00000
+  d6           mm     61.50000     61.50000     +0.00000
+  theta1      deg      0.00000      0.00000     +0.00000
+  theta2      deg    -90.00000    -90.00000     +0.00000
+  theta3      deg    -90.00000    -90.00000     +0.00000
+  theta4      deg      0.00000      0.00000     +0.00000
+  theta5      deg      0.00000      0.00000     +0.00000
+  theta6      deg      0.00000      0.00000     +0.00000
+
+VALIDATION COMPARISON
+
+Method                     s_max (mm)     TransMax OriMax (deg)
+Baseline, nothing fitted       89.302      256.568       46.677
+Stage 1 hand-eye                3.843       10.054        2.651
+Stage 2 DH + hand-eye           4.386       11.235        1.687
+Stage F, controller FK          3.675       11.076        1.842
+Stage F, nominal DH FK          3.236        8.018        2.341

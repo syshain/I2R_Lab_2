@@ -1,4 +1,5 @@
 *.venv
+*.npz
 *.png
 *.jpg
 __*__
