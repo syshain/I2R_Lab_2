@@ -1,3 +1,7 @@
+## v4.1 - Loader guards 
+## 12 Nov 2026
+- Camera matrix loads guarded with a "copy your Lab 1 files into Lab_2/data/" message (calibration_io.load_camera_intrinsics, aruco_artifact_detector); both trees
+
 # v4.0 - Robot serial number reporting added
 ## 11 Nov 2026
 - Added serial number reporting to all robot-interfacing programs
@@ -55,4 +59,5 @@ UNCOMMITTED - pending review.
 Working lab 2 code 
 - Inverse kinematics on matlab
 - Python based dh optimization and verification
+
 
