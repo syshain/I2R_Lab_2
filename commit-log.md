@@ -1,3 +1,9 @@
+## v4.2 - Handout alignment fixes
+## 12 Nov 2026
+- Missing-camera-calibration guidance corrected: now points to image_capture.py + camera_calibration.py (handout Section 6.3, Part 1) instead of copying Lab 1 files (calibration_io, aruco_artifact_detector)
+- ik_lite6.py (solution copy) now references handout Task 1(c) for the ik_residual exercise (was 1(b))
+- STRUCTURE.md brought in line with the code: shipped-solution ik_lite6 description, five-model validation list, lab_config.data_path(), s_max grade bands removed
+
 ## v4.1 - Loader guards 
 ## 12 Nov 2026
 - Camera matrix loads guarded with a "copy your Lab 1 files into Lab_2/data/" message (calibration_io.load_camera_intrinsics, aruco_artifact_detector); both trees

@@ -28,7 +28,7 @@ ZETA_NOMINAL = build_zeta_nominal(6)
 
 
 # =============================================================================
-# THE RESIDUAL  --  this is the one function you write, Task 1(b)
+# THE RESIDUAL  --  the one function students write, Task 1(c)
 # =============================================================================
 
 def ik_residual(q_deg, T_target):
